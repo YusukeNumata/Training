@@ -8,31 +8,31 @@ package yusuke.numata.sort.bubble;
  */
 public class BubbleSort {
 
+	private static final String SEPARATER = ",";
+
 	public static String execute(String param) {
-		String data[] = param.split(",");
-		for (int i = 0; i < data.length; i++) {
-			sort(data);
-		}
+		String data[] = param.split(SEPARATER);
+		sort(data);
 		String rtn = returnParam(data);
 		return rtn;
 	}
 
-	private static String[] sort(String[] data) {
-		for (int i = 0; i + 1 < data.length; i++) {
-			data = compare(data, i , i + 1);
+	private static void sort(String[] data) {
+		for (int i = 0; i < data.length; i++) {
+			for (int j = 0; j + 1 < data.length; j++) {
+				compare(data, j, j + 1);
+			}
 		}
-		return data;
 	}
 
-	private static String[] compare(String[] data, int valBefore, int valAfter) {
-		String mae = data[valBefore];
-		String ato = data[valAfter];
+	private static void compare(String[] data, int i, int j) {
+		String mae = data[i];
+		String ato = data[j];
 		int rtn = mae.compareTo(ato);
 		if (rtn > 0) {
-			data[valBefore] = ato;
-			data[valAfter] = mae;
+			data[i] = ato;
+			data[j] = mae;
 		}
-		return data;
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class BubbleSort {
 		for (int i = 0; i < data.length; i++) {
 			builder.append(data[i]);
 			if (i + 1 != data.length) {
-				builder.append(",");
+				builder.append(SEPARATER);
 			}
 		}
 		return builder.toString();
