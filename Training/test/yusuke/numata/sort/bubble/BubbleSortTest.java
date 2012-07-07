@@ -36,5 +36,8 @@ public class BubbleSortTest {
 		assertEquals("1,1,1,5", BubbleSort.execute("1,1,5,1"));
 		assertEquals("-1,0,1" , BubbleSort.execute("-1,0,1"));
 		assertEquals("-1,0,1" , BubbleSort.execute("1,-1,0"));
+		
+		assertEquals("a,e,z"  , BubbleSort.execute("z,e,a"));
+		
 	}
 }
