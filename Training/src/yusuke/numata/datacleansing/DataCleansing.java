@@ -1,4 +1,4 @@
-package datacleansing;
+package yusuke.numata.datacleansing;
 
 import java.util.HashMap;
 

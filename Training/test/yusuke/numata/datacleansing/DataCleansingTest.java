@@ -1,4 +1,4 @@
-package datacleansing;
+package yusuke.numata.datacleansing;
 
 import static org.junit.Assert.*;
 
@@ -7,6 +7,8 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
+import yusuke.numata.datacleansing.DataCleansing;
 
 public class DataCleansingTest {
 
