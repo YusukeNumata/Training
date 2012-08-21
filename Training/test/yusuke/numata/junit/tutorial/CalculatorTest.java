@@ -8,40 +8,48 @@ import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.experimental.theories.DataPoint;
+import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.Theories;
+import org.junit.experimental.theories.Theory;
+import org.junit.runner.RunWith;
 
+@RunWith(Enclosed.class)
 public class CalculatorTest {
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	@RunWith(Theories.class)
+	public static class 乗算メソッドのパラメータ化テスト {
+		
+//		@DataPoint public static Fixture DATA1 = new Fixture(3, 4, 12);
+//		@DataPoint public static Fixture DATA2 = new Fixture(5, 7, 35);
+		
+		@DataPoints
+		public static Fixture[] DATAS = {
+			new Fixture(3, 4, 12),
+			new Fixture(5, 7, 35)
+		};
+		
+		@Theory
+		public void multiplyで乗算結果が取得できる(Fixture fx) {
+			System.out.println(fx.x + "*" + fx.y + "=" + fx.expected);
+			Calculator calc = new Calculator();
+			int expected = fx.expected;
+			int actual = calc.multiply(fx.x, fx.y);
+			assertThat(actual, is(expected));
+		}
+		
+		// データクラス
+		static class Fixture {
+			int x, y, expected;
+			Fixture(int x, int y, int expected) {
+				this.x = x;
+				this.y = y;
+				this.expected = expected;
+			}
+		}
 	}
-
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
-	public void multiplyで乗算結果が取得できる() {
-		Calculator calc = new Calculator();
-		int expected = 12;
-		int actual = calc.multiply(3, 4);
-		assertThat(actual, is(expected));
-	}
-
-	@Test
-	public void multiplyで5と7の乗算結果が取得できる() {
-		Calculator calc = new Calculator();
-		int expected = 35;
-		int actual = calc.multiply(5, 7);
-		assertThat(actual, is(expected));
-	}
+	
 	
 	@Test
 	public void divideで3と2の除算結果が取得できる() {
