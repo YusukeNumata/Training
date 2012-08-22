@@ -1,21 +1,14 @@
 package yusuke.numata.junit.tutorial;
 
-import static org.hamcrest.CoreMatchers.*;
-import static org.junit.Assert.*;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Assume;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Rule;
-import org.junit.Test;
 import org.junit.experimental.runners.Enclosed;
-import org.junit.experimental.theories.DataPoint;
 import org.junit.experimental.theories.DataPoints;
 import org.junit.experimental.theories.Theories;
 import org.junit.experimental.theories.Theory;
-import org.junit.internal.runners.statements.ExpectException;
 import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 
@@ -33,10 +26,13 @@ public class CalculatorTest {
 			new Fixture(3, 4, 12),
 			new Fixture(5, 7, 35)
 		};
-		
+
+		@Rule
+		public AssertionMessage message = new AssertionMessage();
+
 		@Theory
 		public void multiplyで乗算結果が取得できる(Fixture fx) {
-			System.out.println(fx.x + "*" + fx.y + "=" + fx.expected);
+			message.append("case: %d * %d = %d", fx.x, fx.y, fx.expected);
 			Calculator calc = new Calculator();
 			int expected = fx.expected;
 			int actual = calc.multiply(fx.x, fx.y);
@@ -67,11 +63,13 @@ public class CalculatorTest {
 		
 		@Rule
 		public ExpectedException exception = ExpectedException.none();
+		@Rule
+		public AssertionMessage message = new AssertionMessage();
 		
 		@Theory
 		public void divideで除算結果が取得できる(Fixture fx) {
+			message.append("case: %d / %d = %f", fx.x, fx.y, fx.expected);
 			Assume.assumeTrue(fx.y != 0);	// 0以外なら以降の処理を実行
-			System.out.println(fx.x + "/" + fx.y + "=" + fx.expected);
 			Calculator calc = new Calculator();
 			float expected = fx.expected;
 			float actual = calc.divide(fx.x, fx.y);
@@ -80,8 +78,8 @@ public class CalculatorTest {
 
 		@Theory
 		public void divideの第２引数に0を指定した場合はIllegalArgumentExceptionを送出する(Fixture fx) {
+			message.append("case: %d / %d = %f", fx.x, fx.y, fx.expected);
 			Assume.assumeTrue(fx.y == 0);	// 0なら以降の処理を実行
-			System.out.println(fx.x + "/" + fx.y + "=" + fx.expected + " 0で割っちゃだめ？");
 			exception.expect(IllegalArgumentException.class);
 			Calculator calc = new Calculator();
 			calc.divide(fx.x, fx.y);
