@@ -11,6 +11,10 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+/**
+ * SAXはXMLを先頭から読み込んでいき、そこで発生したイベントをアプリケーションでとらえ処理するクラス.
+ * URL:<code>http://digitechlog.com/2009/02/25/4-ways-to-read-and-write-xml.html</code>を参考.
+ */
 public class HelloWorldSax extends DefaultHandler {
 
 	public static void saxAnalysis(String filepath) {
