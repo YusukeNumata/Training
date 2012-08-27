@@ -24,7 +24,7 @@ public class HelloWorldDOM {
 		// 引数チェック
 		if (filepath == null) {
 			throw new NullPointerException();
-		} else if (filepath == "") {
+		} else if ("".equals(filepath)) {
 			throw new IllegalArgumentException();
 		}
 
