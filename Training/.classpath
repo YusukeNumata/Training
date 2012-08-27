@@ -5,5 +5,10 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.6"/>
 	<classpathentry kind="lib" path="/home/yusuke/eclipse/costomlib/junit4.10/junit-4.10.jar" sourcepath="/home/yusuke/eclipse/costomlib/junit4.10/junit-4.10-src.jar"/>
 	<classpathentry kind="lib" path="/home/yusuke/eclipse/costomlib/jp.co.dgic.eclipse.jdt.djunit_0.8.6/djunit.jar"/>
+	<classpathentry kind="lib" path="/home/yusuke/eclipse/costomlib/jdom-2.0.2/jdom-2.0.2.jar" sourcepath="/home/yusuke/eclipse/costomlib/jdom-2.0.2/jdom-2.0.2-sources.jar">
+		<attributes>
+			<attribute name="javadoc_location" value="jar:file:/home/yusuke/eclipse/costomlib/jdom-2.0.2/jdom-2.0.2-javadoc.jar!/"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
