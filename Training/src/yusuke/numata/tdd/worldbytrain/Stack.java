@@ -4,7 +4,7 @@ import java.util.EmptyStackException;
 
 public class Stack {
 
-	private int value;
+	private int[] values = new int[10];
 	private int size;
 
 	/**
@@ -21,7 +21,7 @@ public class Stack {
 	 */
 	public int top() {
 		emptyCheck();
-		return value;
+		return values[size - 1];
 	}
 
 	/**
@@ -29,7 +29,7 @@ public class Stack {
 	 * @param value 積む値
 	 */
 	public void push(int value) {
-		this.value = value;
+		this.values[size] = value;
 		size++;
 	}
 
@@ -46,6 +46,7 @@ public class Stack {
 	 */
 	public void pop() {
 		emptyCheck();
+		size--;
 	}
 
 	/**

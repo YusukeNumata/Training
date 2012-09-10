@@ -1,9 +1,8 @@
 package yusuke.numata.tdd.worldbytrain;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
-import java.lang.Thread.State;
 import java.util.EmptyStackException;
 
 import org.junit.After;
@@ -67,6 +66,15 @@ public class StackTest {
 	public void testPushAndPop() {
 		stack.push(1);
 		stack.pop();
-		assertThat(stack.size(), is(1));
+		assertThat(stack.size(), is(0));
+	}
+	
+	@Test
+	public void testPushPushPopTop() {
+		stack.push(1);
+		stack.push(2);
+		assertThat(stack.size(), is(2));
+		stack.pop();
+		assertThat(stack.top(), is(1));
 	}
 }
