@@ -2,12 +2,15 @@ package yusuke.numata.tdd.worldbytrain;
 
 public class Stack {
 
+	private int value;
+	private int size;
+
 	/**
 	 * 要素が空か否かを判定する.
 	 * @return 空の場合、true
 	 */
 	public boolean isEmpty() {
-		return true;
+		return size == 0;
 	}
 
 	/**
@@ -23,6 +26,8 @@ public class Stack {
 	 * @param value 積む値
 	 */
 	public void push(int value) {
+		this.value = value;
+		size++;
 	}
 
 	/**
@@ -30,7 +35,7 @@ public class Stack {
 	 * @return スタックのサイズ
 	 */
 	public int size() {
-		return 1;
+		return size;
 	}
 
 }

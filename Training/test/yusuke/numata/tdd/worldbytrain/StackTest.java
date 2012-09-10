@@ -3,6 +3,8 @@ package yusuke.numata.tdd.worldbytrain;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
+import java.lang.Thread.State;
+
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,6 +40,7 @@ public class StackTest {
 	@Test
 	public void testPushAndTop() {
 		stack.push(1);
+		assertThat(stack.isEmpty(), is(false));
 		assertThat(stack.top(), is(1));
 	}
 
@@ -45,5 +48,8 @@ public class StackTest {
 	public void testPushAndSize() {
 		stack.push(1);
 		assertThat(stack.size(), is(1));
+		stack.push(2);
+		assertThat(stack.size(), is(2));
 	}
+
 }
