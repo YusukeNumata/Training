@@ -1,5 +1,6 @@
 package yusuke.numata.tdd.worldbytrain;
 
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import org.junit.After;
@@ -28,7 +29,8 @@ public class StackTest {
 
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		Stack stack = new Stack();
+		assertThat(stack.isEmpty(), is(true));
 	}
 
 }
