@@ -4,6 +4,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.*;
 
 import java.lang.Thread.State;
+import java.util.EmptyStackException;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -52,4 +53,20 @@ public class StackTest {
 		assertThat(stack.size(), is(2));
 	}
 
+	@Test(expected=EmptyStackException.class)
+	public void testEmptyPop() {
+		stack.pop();
+	}
+	
+	@Test(expected=EmptyStackException.class)
+	public void testEmptyTop() {
+		stack.top();
+	}
+
+	@Test
+	public void testPushAndPop() {
+		stack.push(1);
+		stack.pop();
+		assertThat(stack.size(), is(1));
+	}
 }

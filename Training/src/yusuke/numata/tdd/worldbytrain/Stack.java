@@ -1,5 +1,7 @@
 package yusuke.numata.tdd.worldbytrain;
 
+import java.util.EmptyStackException;
+
 public class Stack {
 
 	private int value;
@@ -18,7 +20,8 @@ public class Stack {
 	 * @return 一番上の値
 	 */
 	public int top() {
-		return 1;
+		emptyCheck();
+		return value;
 	}
 
 	/**
@@ -36,6 +39,22 @@ public class Stack {
 	 */
 	public int size() {
 		return size;
+	}
+
+	/**
+	 * スタックの一番上の値を取り除く.
+	 */
+	public void pop() {
+		emptyCheck();
+	}
+
+	/**
+	 * 空判定処理.
+	 */
+	private void emptyCheck() {
+		if (isEmpty()) {
+			throw new EmptyStackException();
+		}
 	}
 
 }
