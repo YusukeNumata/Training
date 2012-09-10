@@ -11,6 +11,8 @@ import org.junit.Test;
 
 public class StackTest {
 
+	private Stack stack;
+
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 	}
@@ -21,6 +23,7 @@ public class StackTest {
 
 	@Before
 	public void setUp() throws Exception {
+		stack = new Stack();
 	}
 
 	@After
@@ -28,9 +31,19 @@ public class StackTest {
 	}
 
 	@Test
-	public void test() {
-		Stack stack = new Stack();
+	public void testCreate() {
 		assertThat(stack.isEmpty(), is(true));
 	}
 
+	@Test
+	public void testPushAndTop() {
+		stack.push(1);
+		assertThat(stack.top(), is(1));
+	}
+
+	@Test
+	public void testPushAndSize() {
+		stack.push(1);
+		assertThat(stack.size(), is(1));
+	}
 }
