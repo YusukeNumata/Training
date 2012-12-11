@@ -30,8 +30,20 @@ public class Q01Test {
 	@Test
 	public void testIsUnice() {
 		Q01 q = new Q01();
+		assertThat(q.isUnice("a"),   is(true));
+		assertThat(q.isUnice("aa"),  is(false));
+		assertThat(q.isUnice("ab"),  is(true));
 		assertThat(q.isUnice("abc"), is(true));
 		assertThat(q.isUnice("abca"), is(false));
+		assertThat(q.isUnice("ああ"), is(false));
 	}
 
+	@Test(timeout=1000)
+	public void testIsUnice負荷テスト() {
+		for (int i = 0; i < 1000000; i++) {
+			Q01 q = new Q01();
+			boolean actual = q.isUnice("アダムスbcde");
+			assertThat(actual, is(true));
+		}
+	}
 }

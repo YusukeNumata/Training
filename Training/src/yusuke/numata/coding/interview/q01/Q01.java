@@ -7,7 +7,7 @@ public class Q01 {
 
 	public boolean isUnice(String str) {
 		char[] chr = str.toCharArray();
-		Set s = new HashSet();
+		Set<Character> s = new HashSet<Character>();
 		for (char c : chr) {
 			boolean b = s.contains(c);
 			if (b) {
